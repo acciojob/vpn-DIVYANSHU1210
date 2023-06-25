@@ -22,7 +22,7 @@ public class ServiceProvider {
     private List<Country> countryList = new ArrayList<>();
 
     @ManyToMany(mappedBy = "serviceProviderList", cascade = CascadeType.ALL)
-    private List<User> userList = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     @OneToMany(mappedBy = "serviceProvider", cascade = CascadeType.ALL)
     private List<Connection> connectionList = new ArrayList<>();
@@ -35,12 +35,12 @@ public class ServiceProvider {
     public ServiceProvider() {
     }
 
-    public ServiceProvider(int id, String name, Admin admin, List<Country> countryList, List<User> userList, List<Connection> connectionList) {
+    public ServiceProvider(int id, String name, Admin admin, List<Country> countryList, List<User> users, List<Connection> connectionList) {
         this.id = id;
         this.name = name;
         this.admin = admin;
         this.countryList = countryList;
-        this.userList = userList;
+        this.users = users;
         this.connectionList = connectionList;
     }
 
@@ -76,12 +76,12 @@ public class ServiceProvider {
         this.countryList = countryList;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 
     public List<Connection> getConnectionList() {

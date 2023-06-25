@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ConnectionServiceImpl implements ConnectionService {
@@ -33,10 +32,10 @@ public class ConnectionServiceImpl implements ConnectionService {
 
         User user = userRepository2.findById(userId).get();
 
-        if(user.isConnected()){
+        if(user.getConnected()){
             throw new Exception("Already connected");
         }
-        if(user.getCountry().getCountryName().toString().equals(countryName)){
+        if(user.getOriginalCountry().getCountryName().toString().equals(countryName)){
             return user;
         }
 
@@ -85,7 +84,7 @@ public class ConnectionServiceImpl implements ConnectionService {
         //Else, disconnect from vpn, make masked Ip as null, update relevant attributes and return updated user.
 
         User user = userRepository2.findById(userId).get();
-        if(user.isConnected())throw new Exception("Already disconnected");
+        if(user.getConnected())throw new Exception("Already disconnected");
 
 
         user.setMaskedIp(null);
@@ -119,7 +118,7 @@ public class ConnectionServiceImpl implements ConnectionService {
             String ip = receiver.getMaskedIp();
             String code= ip.substring(0,3);
 
-            if(code.equals(sender.getCountry().getCode())){
+            if(code.equals(sender.getOriginalCountry().getCode())){
                 return sender;
             }
             String countryName = "";
@@ -149,11 +148,11 @@ public class ConnectionServiceImpl implements ConnectionService {
             }
         }
         else {
-            if(sender.getCountry() == receiver.getCountry()){
+            if(sender.getOriginalCountry() == receiver.getOriginalCountry()){
                 return sender;
             }
             else{
-                String countryName  = receiver.getCountry().getCountryName().toString();
+                String countryName  = receiver.getOriginalCountry().getCountryName().toString();
 
                 try{
                     User updatedSender = connect(senderId, countryName);

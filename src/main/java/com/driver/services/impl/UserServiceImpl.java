@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     public User register(String username, String password, String countryName) throws Exception{
         User user = new User();
 
-        user.setUserName(username);
+        user.setUsername(username);
         user.setPassword(password);
         Country country = new Country();
         if(countryName.equalsIgnoreCase("ind")){
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         }else{
             throw new Exception("Country not found");
         }
-        user.setCountry(country);
+        user.setOriginalCountry(country);
         user.setConnected(false);
         user.setMaskedIp(null);
         user.setOriginalIp(country.getCode());
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
         ServiceProvider serviceProvider = serviceProviderRepository3.findById(serviceProviderId).get();
 
         user.getServiceProviderList().add(serviceProvider);
-        serviceProvider.getUserList().add(user);
+        serviceProvider.getUsers().add(user);
 
         userRepository3.save(user);
         return user;
