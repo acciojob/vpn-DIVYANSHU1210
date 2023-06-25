@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
         user.setOriginalCountry(country);
         user.setConnected(false);
         user.setMaskedIp(null);
-        user.setOriginalIp(country.getCode());
+        user.setOriginalIp(country.getCode()+ "." + user.getId());
         country.setUser(user);
         userRepository3.save(user);
         return user;
