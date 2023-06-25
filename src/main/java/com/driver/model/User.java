@@ -95,7 +95,7 @@ public class User {
         this.maskedIp = maskedIp;
     }
 //hello hello
-    public boolean isConnected() {
+    public boolean getConnected() {
         return connected;
     }
 
