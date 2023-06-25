@@ -24,6 +24,7 @@ public class User {
     private boolean connected;
 
     @OneToOne     /////////
+    @JoinColumn
     private Country originalCountry;
 
     @ManyToMany     //////////
