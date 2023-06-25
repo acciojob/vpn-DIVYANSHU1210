@@ -26,6 +26,7 @@ public class Country {
     //  /////////////////////////////
     //  @Data
 
+
     public Country() {
     }
 
@@ -36,7 +37,6 @@ public class Country {
         this.serviceProvider = serviceProvider;
         this.user = user;
     }
-
 
     public int getId() {
         return id;

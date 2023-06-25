@@ -32,18 +32,14 @@ public class User {
     private List<ServiceProvider> serviceProviderList = new ArrayList<>();
 
 
-    @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Connection> connectionList = new ArrayList<>();
-
-
-
-
-
-
 
 
 //  //////////////////////////////////
 //  @Data
+
+
     public User() {
     }
 
@@ -99,7 +95,7 @@ public class User {
         this.maskedIp = maskedIp;
     }
 
-    public boolean getConnected() {
+    public boolean isConnected() {
         return connected;
     }
 

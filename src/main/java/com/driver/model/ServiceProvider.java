@@ -32,9 +32,6 @@ public class ServiceProvider {
 //    @Data
 
 
-    public ServiceProvider() {
-    }
-
     public ServiceProvider(int id, String name, Admin admin, List<Country> countryList, List<User> users, List<Connection> connectionList) {
         this.id = id;
         this.name = name;
@@ -42,6 +39,9 @@ public class ServiceProvider {
         this.countryList = countryList;
         this.users = users;
         this.connectionList = connectionList;
+    }
+
+    public ServiceProvider() {
     }
 
     public int getId() {

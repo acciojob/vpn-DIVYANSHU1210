@@ -25,14 +25,15 @@ public class Admin {
     //////////////////////////////////////
     // @Data
 
+
     public Admin() {
     }
 
-    public Admin(int id, String username, String password, List<ServiceProvider> ServiceProviders) {
+    public Admin(int id, String username, String password, List<ServiceProvider> serviceProviders) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.ServiceProviders = ServiceProviders;
+        ServiceProviders = serviceProviders;
     }
 
     public int getId() {
@@ -64,6 +65,6 @@ public class Admin {
     }
 
     public void setServiceProviders(List<ServiceProvider> serviceProviders) {
-        this.ServiceProviders = serviceProviders;
+        ServiceProviders = serviceProviders;
     }
 }
